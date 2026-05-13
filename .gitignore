@@ -1,0 +1,17 @@
+# exec file
+cub3D
+
+#vscode
+.vscode
+
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+/lib/minilibx
+
+# Executables
+*.exe
+*.out
