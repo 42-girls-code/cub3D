@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:51:43 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 12:46:07 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/13 14:16:09 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ static int	process_config(char *line, t_game *game)
 	type = get_line_type(line);
 	if (type == SKIP)
 		return (0);
+	if (type == NONE && game->config.count < 6)
+		return (message_erro("Error: Incomplete configuration or invalid."));
 	if (type == NONE)
-		return (message_erro("Error: Invalid identifier or unexpected line."));
+		return (message_erro("Error: Invalid identifier."));
 	if (type >= NORTH && type <= EAST)
 	{
 		if (set_texture(line, type, game) != 0)
