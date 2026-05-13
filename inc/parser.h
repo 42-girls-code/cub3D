@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:33:32 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 12:54:36 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/13 18:58:06 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,20 @@ typedef enum e_type
 }	t_type;
 
 //parse_color.c
-int	set_color(char *line, t_type type, t_game *game);
+int		set_color(char *line, t_type type, t_game *game);
 
 //parse_map.c
-int	parse_map_file(char *path, t_game *game);
+int		parse_map_file(char *path, t_game *game);
 
 //parse_texture.c
-int	set_texture(char *line, t_type type, t_game *game);
+int		set_texture(char *line, t_type type, t_game *game);
 
 //valid_map.c
-int	valid_cub_extension(char *path);
+int		valid_cub_extension(char *path);
 
-//map_read.c
-// void	read_map(int fd, t_game *game);
+//map_config.c
+int		process_config(char *line, t_game *game);
+void	process_map_line(char *line, t_game *game);
 
 //map_utils.c
 // int		is_c_valid(char c);

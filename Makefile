@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/05/13 12:39:32 by ingrid           ###   ########.fr        #
+#    Updated: 2026/05/13 18:55:19 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,9 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/parser/parse_color.c \
 		$(SRC_DIR)/parser/parse_texture.c \
 		$(SRC_DIR)/parser/parse_map.c \
-		$(SRC_DIR)/parser/valid_map.c
+		$(SRC_DIR)/parser/valid_map.c \
+		$(SRC_DIR)/utils/cleanup.c \
+		$(SRC_DIR)/parser/map_config.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

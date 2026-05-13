@@ -6,15 +6,15 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:51:43 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 14:16:09 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/13 19:08:40 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "cub3d.h"
 
-static t_type	get_line_type(char *line);
-static int		process_config(char *line, t_game *game);
+static int		handle_line(char *line, t_game *game, t_state *state);
+static int		handle_parse_error(int fd);
 
 int	parse_map_file(char *path, t_game *game)
 {
@@ -26,77 +26,49 @@ int	parse_map_file(char *path, t_game *game)
 		return (1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (message_erro("Error: no such file or directory."));
+		return (message_erro("Error: No such file or directory."));
 	state = STATE_CONFIG;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line)
 	{
-		if (state == STATE_CONFIG)
+		if (handle_line(line, game, &state))
 		{
-			if (process_config(line, game) != 0)
-			{
-				free(line);
-				close(fd);
-				return (1);
-			}
-			if (game->config.count == 6)
-				state = STATE_MAP;
+			free(line);
+			return (handle_parse_error(fd));
 		}
-		// else if (state == STATE_MAP)
-		// 	process_map_line(line, game); // implementar
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
+	if (game->config.count < 6)
+		return (message_erro("Error: Incomplete config."));
 	return (0);
 }
 
-static int	process_config(char *line, t_game *game)
+static int	handle_line(char *line, t_game *game, t_state *state)
 {
-	t_type	type;
-
-	type = get_line_type(line);
-	if (type == SKIP)
-		return (0);
-	if (type == NONE && game->config.count < 6)
-		return (message_erro("Error: Incomplete configuration or invalid."));
-	if (type == NONE)
-		return (message_erro("Error: Invalid identifier."));
-	if (type >= NORTH && type <= EAST)
+	if (*state == STATE_CONFIG)
 	{
-		if (set_texture(line, type, game) != 0)
+		if (process_config(line, game) != 0)
 			return (1);
-		game->config.count++;
-		return (0);
+		if (game->config.count == 6)
+			*state = STATE_MAP;
 	}
-	if (type == FLOOR || type == CEILING)
-	{
-		if (set_color(line, type, game) != 0)
-			return (1);
-		game->config.count++;
-		return (0);
-	}
-	return (1);
+	else if (*state == STATE_MAP)
+		process_map_line(line, game);
+	return (0);
 }
 
-static t_type	get_line_type(char *line)
+static int	handle_parse_error(int fd)
 {
-	int	i;
+	char	*line;
 
-	i = 0;
-	while (line[i] && is_space(line[i]))
-		i++;
-	if (line[i] == '\0' || line[i] == '\n')
-		return (SKIP);
-	if (ft_strncmp(line + i, "NO ", 3) == 0)
-		return (NORTH);
-	if (ft_strncmp(line + i, "SO ", 3) == 0)
-		return (SOUTH);
-	if (ft_strncmp(line + i, "WE ", 3) == 0)
-		return (WEST);
-	if (ft_strncmp(line + i, "EA ", 3) == 0)
-		return (EAST);
-	if (ft_strncmp(line + i, "F ", 2) == 0)
-		return (FLOOR);
-	if (ft_strncmp(line + i, "C ", 2) == 0)
-		return (CEILING);
-	return (NONE);
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (1);
 }

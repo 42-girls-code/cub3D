@@ -6,11 +6,12 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:47:56 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 12:36:11 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/13 17:29:28 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "mlx.h"
 
 int	message_erro(char *message)
 {
@@ -46,14 +47,10 @@ int	free_array_erro(char **ptr)
 	return (-1);
 }
 
-int	is_empty_line(char *line)
+void	exit_error(t_game *game, char *specific_msg)
 {
-	int	i;
-
-	i = 0;
-	while (line[i] && is_space(line[i]))
-		i++;
-	if (line[i] == '\0' || line[i] == '\n')
-		return (1);
-	return (0);
+	if (specific_msg)
+		message_erro(specific_msg);
+	clean_up(game);
+	exit(1);
 }

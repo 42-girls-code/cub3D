@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 12:35:51 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/13 19:00:52 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,23 @@ typedef struct s_game
 {
 	t_config	config;
 	t_map		map_data;
+	t_list		*map_list;
 	void		*mlx;
 	void		*win;
 }	t_game;
 
 //map_utils.c
 int		is_c_valid(char c);
+int		is_line_empty(char *line);
 
 //utils.c
 int		message_erro(char *message);
 int		is_space(char c);
 void	free_array(char **arr);
 int		free_array_erro(char **ptr);
-int		is_empty_line(char *line);
+void	exit_error(t_game *game, char *specific_msg);
+
+//cleanup.c
+void 	clean_up(t_game *game);
 
 #endif
