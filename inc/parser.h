@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:33:32 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 18:58:06 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:07:51 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		valid_cub_extension(char *path);
 
 //map_config.c
 int		process_config(char *line, t_game *game);
-void	process_map_line(char *line, t_game *game);
+int	process_map_line(char *line, t_game *game);
 
 //map_utils.c
 // int		is_c_valid(char c);

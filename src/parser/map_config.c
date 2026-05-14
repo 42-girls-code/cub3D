@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:21:29 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 19:23:41 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:29:57 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,24 @@ static t_type	get_line_type(char *line)
 	return (NONE);
 }
 
-void	process_map_line(char *line, t_game *game)
+int	process_map_line(char *line, t_game *game)
 {
 	t_list	*new_node;
 	char	*content;
 
 	if (game->map_list == NULL && is_line_empty(line))
-		return ;
+		return (0);
+	if (!is_map_line_valid(line, game))
+		return (1);
 	content = ft_strtrim(line, "\n");
 	if (!content)
-		return ;
+		return (1);
 	new_node = ft_lstnew(content);
 	if (!new_node)
 	{
 		free(content);
-		return ;
+		return (1);
 	}
 	ft_lstadd_back(&game->map_list, new_node);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 19:00:52 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:33:48 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,24 @@
 // # define A 97
 // # define D 100
 
-typedef struct s_map
+// typedef struct s_map
+// {
+// 	char	**grid;
+// 	int		rows;
+// 	int		cols;
+// 	char	spawn_dir;
+// 	// int		checker[256];
+// 	double	player_x;
+// 	double	player_y;
+// 	// t_list	*head;
+// }	t_map;
+
+typedef struct s_player
 {
-	char	**grid;
-	int		rows;
-	int		cols;
-	char	spawn_dir;
-	// int		checker[256];
-	double	player_x;
-	double	player_y;
-	// t_list	*head;
-}	t_map;
+	double	pos_x;
+	double	pos_y;
+	char	dir;
+}	t_player;
 
 typedef struct s_config
 {
@@ -50,15 +57,18 @@ typedef struct s_config
 typedef struct s_game
 {
 	t_config	config;
-	t_map		map_data;
+	t_player	player;
+	// t_map		map_data;
 	t_list		*map_list;
 	void		*mlx;
 	void		*win;
+	int			player_count;
 }	t_game;
 
 //map_utils.c
 int		is_c_valid(char c);
 int		is_line_empty(char *line);
+int		is_map_line_valid(char *line, t_game *game);
 
 //utils.c
 int		message_erro(char *message);
