@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 10:47:32 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 15:10:02 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,12 @@
 // # define A 97
 // # define D 100
 
-// typedef struct s_map
-// {
-// 	char	**grid;
-// 	int		rows;
-// 	int		cols;
-// 	char	spawn_dir;
-// 	// int		checker[256];
-// 	double	player_x;
-// 	double	player_y;
-// 	// t_list	*head;
-// }	t_map;
+typedef struct s_map
+{
+	char	**grid;
+	int		width;
+	int		height;
+}	t_map;
 
 typedef struct s_player
 {
@@ -53,16 +48,15 @@ typedef struct s_config
 	int		count;
 }	t_config;
 
-//em construção
 typedef struct s_game
 {
 	t_config	config;
 	t_player	player;
-	// t_map		map_data;
+	t_map		map;
 	t_list		*map_list;
-	void		*mlx;
-	void		*win;
 	int			player_count;
+	// void		*mlx;
+	// void		*win;
 }	t_game;
 
 //map_utils.c

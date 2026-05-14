@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_config.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:21:29 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 10:29:57 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 14:37:28 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	process_map_line(char *line, t_game *game)
 
 	if (game->map_list == NULL && is_line_empty(line))
 		return (0);
+	if (game->map_list != NULL && is_line_empty(line))
+		return (message_erro("Error: Empty line inside/after map"));
 	if (!is_map_line_valid(line, game))
 		return (1);
 	content = ft_strtrim(line, "\n");
