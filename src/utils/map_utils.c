@@ -6,20 +6,12 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:40:27 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 10:43:17 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:47:01 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "cub3d.h"
-
-int	is_c_valid(char c)
-{
-	if (ft_strchr("01NSEW", c) != NULL)
-		return (1);
-	else
-		return (0);
-}
 
 int	is_line_empty(char *line)
 {

@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 10:33:48 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:47:32 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ typedef struct s_game
 }	t_game;
 
 //map_utils.c
-int		is_c_valid(char c);
 int		is_line_empty(char *line);
 int		is_map_line_valid(char *line, t_game *game);
 
