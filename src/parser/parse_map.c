@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:51:43 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/15 11:26:30 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/15 14:57:05 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int	handle_line(char *line, t_game *game, t_state *state);
 static int	handle_parse_error(int fd);
 static int	validate_final_config(t_game *game);
+static int	finalize_parsing(t_game *game);
 
 int	parse_map_file(char *path, t_game *game)
 {
@@ -41,11 +42,7 @@ int	parse_map_file(char *path, t_game *game)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (validate_final_config(game))
-		return (1);
-	if (convert_list_to_array(game))
-		return (1);
-	return (0);
+	return (finalize_parsing(game));
 }
 
 static int	handle_line(char *line, t_game *game, t_state *state)
@@ -77,6 +74,17 @@ static int	handle_parse_error(int fd)
 	}
 	close(fd);
 	return (1);
+}
+
+static int	finalize_parsing(t_game *game)
+{
+	if (validate_final_config(game))
+		return (1);
+	if (convert_list_to_array(game))
+		return (1);
+	if (validate_map_walls(game))
+		return (1);
+	return (0);
 }
 
 //mover para arquivo valid_map

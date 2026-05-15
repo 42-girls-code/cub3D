@@ -6,6 +6,7 @@ cub3D
 
 # Object files
 *.o
+/build
 
 # Libraries
 *.lib

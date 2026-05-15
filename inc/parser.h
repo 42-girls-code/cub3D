@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:33:32 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/15 11:25:04 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/15 14:33:42 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	set_texture(char *line, t_type type, t_game *game);
 
 //valid_map.c
 int	valid_cub_extension(char *path);
+int	validate_map_walls(t_game *game);
 
 //map_config.c
 int	process_config(char *line, t_game *game);
