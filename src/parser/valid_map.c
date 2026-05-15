@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 12:27:11 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/13 12:27:36 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/15 11:28:50 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,15 @@ int	valid_cub_extension(char *path)
 	}
 	return (ret);
 }
+
+// validar se o mapa está fechado
+
+// static int	is_closed(t_game *game, int x, int y)
+// {
+// 	return (1);
+// }
+
+// int	validate_map_walls(t_game *game)
+// {
+// 	return (0);
+// }

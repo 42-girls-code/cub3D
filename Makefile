@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/05/13 18:55:19 by ingrid           ###   ########.fr        #
+#    Updated: 2026/05/15 11:28:34 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/parser/valid_map.c \
 		$(SRC_DIR)/utils/cleanup.c \
 		$(SRC_DIR)/parser/map_config.c \
+		$(SRC_DIR)/parser/normalize_map.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
