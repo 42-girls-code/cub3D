@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 16:21:12 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/20 16:42:14 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define RIGHT_ARROW 65363
 # define LEFT_ARROW 65361
 # define ENTER 65421
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 500
 
 typedef enum e_game_state
 {
