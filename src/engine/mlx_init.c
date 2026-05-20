@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 11:14:22 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 16:17:51 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/20 16:42:55 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	init_mlx(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		exit_error(game, "Error: mlx_init failed.");
-	game->win = mlx_new_window(game->mlx, 800, 500, "Cub3D");
+	game->win = mlx_new_window(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
+			"Cub3D");
 	if (!game->win)
 		exit_error(game, "Error: mlx_new_window failed.");
 }
