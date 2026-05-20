@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:25:52 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 15:09:33 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2026/05/20 15:56:36 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	clean_up(t_game *game)
 		ft_lstclear(&game->map_list, free);
 	if (game->map.grid)
 		free_array(game->map.grid);
-	//janela mlx
-	// mlx_destroy_window();
+	if (game->intro.img)
+		mlx_destroy_image(game->mlx, game->intro.img);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 }

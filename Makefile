@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/05/15 11:28:34 by ingrid           ###   ########.fr        #
+#    Updated: 2026/05/20 16:23:10 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT_DIR = lib/libft
 MINILIBX_DIR = lib/minilibx
 LIBFT_INC = $(LIBFT_DIR)/inc
 MINILIBX_INC = $(MINILIBX_DIR)
-LIBS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lX11 -lm -lz
+LIBS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
 
 INCLUDES = -I$(INC_DIR) -I$(LIBFT_INC) -I$(MINILIBX_INC)
 
@@ -49,6 +49,9 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/utils/cleanup.c \
 		$(SRC_DIR)/parser/map_config.c \
 		$(SRC_DIR)/parser/normalize_map.c \
+		$(SRC_DIR)/engine/mlx_init.c \
+		$(SRC_DIR)/engine/hooks.c \
+		$(SRC_DIR)/engine/render.c \
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

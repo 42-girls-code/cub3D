@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 15:10:02 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2026/05/20 16:21:12 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,30 @@
 # define CUB3D_H
 
 # include "libft.h"
-// # include "parser.h"
-// # include "mlx.h"
+# include "mlx.h"
 
-// # define TILE 68
-// # define W 119
-// # define S 115
-// # define A 97
-// # define D 100
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+# define ESC 65307
+# define RIGHT_ARROW 65363
+# define LEFT_ARROW 65361
+# define ENTER 65421
+
+typedef enum e_game_state
+{
+	STATE_INTRO,
+	STATE_PLAYING,
+	STATE_GAMEOVER
+}	t_game_state;
+
+typedef struct s_img
+{
+	void	*img;
+	int		width;
+	int		height;
+}	t_img;
 
 typedef struct s_map
 {
@@ -50,13 +66,15 @@ typedef struct s_config
 
 typedef struct s_game
 {
-	t_config	config;
-	t_player	player;
-	t_map		map;
-	t_list		*map_list;
-	int			player_count;
-	// void		*mlx;
-	// void		*win;
+	t_config		config;
+	t_player		player;
+	t_map			map;
+	t_list			*map_list;
+	int				player_count;
+	void			*mlx;
+	void			*win;
+	t_game_state	state;
+	t_img			intro;
 }	t_game;
 
 //map_utils.c
@@ -72,5 +90,16 @@ void	exit_error(t_game *game, char *specific_msg);
 
 //cleanup.c
 void 	clean_up(t_game *game);
+
+//engine/mlx_init.c
+void	init_mlx(t_game *game);
+void	load_intro(t_game *game);
+
+//engine/hooks.c
+int		handle_close(t_game *game);
+int		handle_keypress(int keycode, t_game *g);
+
+//engine/render.c
+int		render_game(t_game *game);
 
 #endif
