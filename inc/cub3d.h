@@ -37,6 +37,10 @@ typedef enum e_game_state
 typedef struct s_img
 {
 	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 	int		width;
 	int		height;
 }	t_img;
@@ -77,6 +81,7 @@ typedef struct s_game
 	void			*win;
 	t_game_state	state;
 	t_img			intro;
+	t_img			frame;
 }	t_game;
 
 //map_utils.c
