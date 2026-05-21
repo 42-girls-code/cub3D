@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 16:42:14 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/21 20:41:59 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # define ESC 65307
 # define RIGHT_ARROW 65363
 # define LEFT_ARROW 65361
-# define ENTER 65421
+# define ENTER_MAIN 65293
+# define ENTER_NUMPAD 65421
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 500
 
@@ -107,6 +108,13 @@ int		handle_close(t_game *game);
 int		handle_keypress(int keycode, t_game *g);
 
 //engine/render.c
+void	render_background(t_game *game);
 int		render_game(t_game *game);
+
+//engine/image.c
+void	create_image(t_game *game);
+
+//engine/draw.c
+void	put_pixel(t_img *img, int x, int y, int color);
 
 #endif

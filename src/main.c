@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 16:22:36 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/21 20:20:22 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	init_t_game(t_game *game)
 static void	start_game(t_game *game)
 {
 	init_mlx(game);
+	create_image(game);
 	load_intro(game);
 	mlx_hook(game->win, 17, 0, handle_close, game);
 	mlx_hook(game->win, 2, 1L << 0, handle_keypress, game);

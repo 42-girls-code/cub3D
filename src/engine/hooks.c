@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 15:09:58 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 16:21:55 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/21 20:42:25 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		handle_close(game);
-	if (game->state == STATE_INTRO && keycode == ENTER)
+	if (game->state == STATE_INTRO
+	&& (keycode == ENTER_MAIN
+		|| keycode == ENTER_NUMPAD))
 	{
 		game->state = STATE_PLAYING;
 		mlx_destroy_image(game->mlx, game->intro.img);
