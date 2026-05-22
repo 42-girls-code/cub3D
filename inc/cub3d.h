@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/21 20:57:28 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/22 15:20:33 by csuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct s_player
 	double	pos_x;
 	double	pos_y;
 	char	dir;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_config
@@ -83,6 +87,7 @@ typedef struct s_game
 	t_game_state	state;
 	t_img			intro;
 	t_img			frame;
+	t_img			textures[4];
 }	t_game;
 
 //map_utils.c
