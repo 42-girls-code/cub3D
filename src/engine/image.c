@@ -6,7 +6,7 @@
 /*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 20:03:38 by cris              #+#    #+#             */
-/*   Updated: 2026/05/21 20:08:52 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/21 21:07:13 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	create_image(t_game *game)
 	);
 	if (!game->frame.img)
 		exit_error(game, "Error: mlx_new_image failed.");
-
 	game->frame.addr = mlx_get_data_addr(
 		game->frame.img,
 		&game->frame.bpp,

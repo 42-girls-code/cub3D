@@ -6,7 +6,7 @@
 /*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/21 20:41:59 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/21 20:57:28 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	init_mlx(t_game *game);
 void	load_intro(t_game *game);
 
 //engine/hooks.c
-int		handle_close(t_game *game);
-int		handle_keypress(int keycode, t_game *g);
+int			handle_close(t_game *game);
+int			handle_keypress(int keycode, t_game *game);
 
 //engine/render.c
 void	render_background(t_game *game);
