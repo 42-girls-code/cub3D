@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 17:25:52 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/20 15:56:36 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/22 14:45:53 by csuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	clean_up(t_game *game)
 		free_array(game->map.grid);
 	if (game->intro.img)
 		mlx_destroy_image(game->mlx, game->intro.img);
+	if (game->frame.img)
+		mlx_destroy_image(game->mlx, game->frame.img);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

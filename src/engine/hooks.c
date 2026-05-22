@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 15:09:58 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/21 21:03:03 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/22 14:52:39 by csuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,13 @@ static void	handle_player_input(int keycode, t_game *game)
 		printf("Rotate right\n");
 	else if (keycode == LEFT_ARROW)
 		printf("Rotate left\n");
-
 	(void)game;
 }
 
 int	handle_close(t_game *game)
 {
-	if (game->frame.img)
-		mlx_destroy_image(game->mlx, game->frame.img);
-	if (game->intro.img)
-		mlx_destroy_image(game->mlx, game->intro.img);
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
 	clean_up(game);
 	exit(0);
-	return (0);
 }
 
 int	handle_keypress(int keycode, t_game *game)
