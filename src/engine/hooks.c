@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 15:09:58 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:22:52 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/25 15:42:22 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ static void	handle_player_input(int keycode, t_game *game)
 	else if (keycode == S)
 		move_player_forward_back(game, -MOVE_SPEED);
 	else if (keycode == A)
-		move_player_strafe(game, -MOVE_SPEED);
+		move_player_sideways(game, -MOVE_SPEED);
 	else if (keycode == D)
-		move_player_strafe(game, MOVE_SPEED);
+		move_player_sideways(game, MOVE_SPEED);
 	else if (keycode == RIGHT_ARROW)
 		rotate_player(game, ROT_SPEED);
 	else if (keycode == LEFT_ARROW)
 		rotate_player(game, -ROT_SPEED);
-	printf("Pos X: %f, Pos Y: %f | Dir X: %f, Dir Y: %f\n",
-		game->player.pos_x, game->player.pos_y, game->player.dir_x, game->player.dir_y);
+	// printf("\033[H\033[J");
+	printf("=== DEBUG CUB3D ===\033[0m\n");
+	printf("Posição Player:  X: [%.3f] | Y: [%.3f]\n", game->player.pos_x, game->player.pos_y);
+	printf("Vetor Direção:   X: [%.3f] | Y: [%.3f]\n", game->player.dir_x, game->player.dir_y);
+	printf("Plano Câmera:    X: [%.3f] | Y: [%.3f]\n", game->player.plane_x, game->player.plane_y);
+	printf("===================\n");
 }
 
 int	handle_close(t_game *game)

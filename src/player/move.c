@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 15:09:31 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:10:59 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/25 15:35:30 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	move_player_forward_back(t_game *game, double speed)
 	}
 }
 
-void	move_player_strafe(t_game *game, double speed)
+void	move_player_sideways(t_game *game, double speed)
 {
 	double	new_x;
 	double	new_y;

@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:22:39 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/25 15:35:15 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	put_pixel(t_img *img, int x, int y, int color);
 
 //player/move.c
 void	move_player_forward_back(t_game *game, double speed);
-void	move_player_strafe(t_game *game, double speed);
+void	move_player_sideways(t_game *game, double speed);
 
 //player/rotate.c
 void	rotate_player(t_game *game, double angle);
