@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/21 20:20:22 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/25 10:50:59 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	init_t_game(t_game *game)
 	ft_memset(game, 0, sizeof(t_game));
 	game->config.floor_color = -1;
 	game->config.ceiling_color = -1;
-	game->config.count = 0;
 	game->state = STATE_INTRO;
 }
 

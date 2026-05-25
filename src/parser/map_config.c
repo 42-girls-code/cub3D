@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_config.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:21:29 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/14 14:37:28 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:19:33 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "cub3d.h"
 
 static t_type	get_line_type(char *line);
+static int		is_line_empty(char *line);
+static int		is_map_line_valid(char *line, t_game *game);
 
 int	process_config(char *line, t_game *game)
 {
@@ -89,4 +91,40 @@ int	process_map_line(char *line, t_game *game)
 	}
 	ft_lstadd_back(&game->map_list, new_node);
 	return (0);
+}
+
+static int	is_line_empty(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && is_space(line[i]))
+		i++;
+	if (line[i] == '\0' || line[i] == '\n')
+		return (1);
+	return (0);
+}
+
+static int	is_map_line_valid(char *line, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		if (ft_strchr("NSEW", line[i]))
+			save_player_info(game, line[i], i);
+		if (game->player_count > 1)
+		{
+			ft_putendl_fd("Error: multiple players detected.", 2);
+			return (0);
+		}
+		if (ft_strchr("01NSEW ", line[i]) == NULL)
+		{
+			ft_putendl_fd("Error: map contains an invalid character.", 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

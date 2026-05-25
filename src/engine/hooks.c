@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 15:09:58 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/22 14:52:39 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:22:52 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,19 @@ static void	handle_intro(int keycode, t_game *game)
 static void	handle_player_input(int keycode, t_game *game)
 {
 	if (keycode == W)
-		printf("Move forward\n");
+		move_player_forward_back(game, MOVE_SPEED);
 	else if (keycode == S)
-		printf("Move backward\n");
+		move_player_forward_back(game, -MOVE_SPEED);
 	else if (keycode == A)
-		printf("Move left\n");
+		move_player_strafe(game, -MOVE_SPEED);
 	else if (keycode == D)
-		printf("Move right\n");
+		move_player_strafe(game, MOVE_SPEED);
 	else if (keycode == RIGHT_ARROW)
-		printf("Rotate right\n");
+		rotate_player(game, ROT_SPEED);
 	else if (keycode == LEFT_ARROW)
-		printf("Rotate left\n");
-	(void)game;
+		rotate_player(game, -ROT_SPEED);
+	printf("Pos X: %f, Pos Y: %f | Dir X: %f, Dir Y: %f\n",
+		game->player.pos_x, game->player.pos_y, game->player.dir_x, game->player.dir_y);
 }
 
 int	handle_close(t_game *game)
@@ -49,11 +50,9 @@ int	handle_keypress(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		handle_close(game);
-
 	if (game->state == STATE_INTRO)
 		handle_intro(keycode, game);
 	else if (game->state == STATE_PLAYING)
 		handle_player_input(keycode, game);
-
 	return (0);
 }

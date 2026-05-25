@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cris <cris@student.42.fr>                  +#+  +:+       +#+         #
+#    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/05/21 20:38:02 by cris             ###   ########.fr        #
+#    Updated: 2026/05/25 15:21:47 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ RED = \033[1;31m
 # Files
 SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/utils/utils.c \
-		$(SRC_DIR)/utils/map_utils.c \
 		$(SRC_DIR)/parser/parse_color.c \
 		$(SRC_DIR)/parser/parse_texture.c \
 		$(SRC_DIR)/parser/parse_map.c \
@@ -53,14 +52,18 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/engine/hooks.c \
 		$(SRC_DIR)/engine/render.c \
 		$(SRC_DIR)/engine/draw.c \
-		$(SRC_DIR)/engine/image.c
+		$(SRC_DIR)/engine/image.c \
+		$(SRC_DIR)/parser/init_player.c \
+		$(SRC_DIR)/player/move.c \
+		$(SRC_DIR)/player/rotate.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Rules
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
+# $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
+$(NAME): $(OBJS) $(LIBFT)
 		@echo "$(YELLOW)[Cub3D]$(RESET) Linking objects..."
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)[OK]$(RESET) $(NAME) compiled successfully."
@@ -72,10 +75,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/cub3d.h
 $(LIBFT):
 		@echo "$(YELLOW)[LIB]$(RESET) Building libft..."
 		@$(MAKE) -C $(LIBFT_DIR) --silent
-		
-$(MINILIBX):
-	@echo "$(YELLOW)[MLX]$(RESET) Building MiniLibX..."
-	@$(MAKE) -C $(MINILIBX_DIR) --silent
+
+# $(MINILIBX):
+# 	@echo "$(YELLOW)[MLX]$(RESET) Building MiniLibX..."
+# 	@$(MAKE) -C $(MINILIBX_DIR) --silent
 
 clean:
 		@rm -f $(NAME)

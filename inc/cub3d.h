@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/22 15:20:33 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:22:39 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@
 # define LEFT_ARROW 65361
 # define ENTER_MAIN 65293
 # define ENTER_NUMPAD 65421
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 500
+# define SCREEN_WIDTH 800
+# define SCREEN_HEIGHT 500
+
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
 
 typedef enum e_game_state
 {
@@ -90,10 +93,6 @@ typedef struct s_game
 	t_img			textures[4];
 }	t_game;
 
-//map_utils.c
-int		is_line_empty(char *line);
-int		is_map_line_valid(char *line, t_game *game);
-
 //utils.c
 int		message_erro(char *message);
 int		is_space(char c);
@@ -121,5 +120,12 @@ void	create_image(t_game *game);
 
 //engine/draw.c
 void	put_pixel(t_img *img, int x, int y, int color);
+
+//player/move.c
+void	move_player_forward_back(t_game *game, double speed);
+void	move_player_strafe(t_game *game, double speed);
+
+//player/rotate.c
+void	rotate_player(t_game *game, double angle);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 16:20:25 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/21 20:06:57 by cris             ###   ########.fr       */
+/*   Updated: 2026/05/25 15:01:00 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	render_background(t_game *game)
 	}
 }
 
-int		render_game(t_game *game)
+int	render_game(t_game *game)
 {
 	if (game->state == STATE_INTRO)
 		mlx_put_image_to_window(
@@ -44,7 +44,7 @@ int		render_game(t_game *game)
 			game->intro.img,
 			0,
 			0
-		);
+			);
 	else if (game->state == STATE_PLAYING)
 	{
 		render_background(game);
@@ -54,7 +54,7 @@ int		render_game(t_game *game)
 			game->frame.img,
 			0,
 			0
-		);
+			);
 	}
 	return (0);
 }
