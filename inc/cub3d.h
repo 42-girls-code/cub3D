@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:35:15 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/26 12:08:24 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@
 
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.03
+
+typedef struct s_keys
+{
+	int	w;
+	int	s;
+	int	a;
+	int	d;
+	int	left;
+	int	right;
+}	t_keys;
 
 typedef enum e_game_state
 {
@@ -91,6 +101,7 @@ typedef struct s_game
 	t_img			intro;
 	t_img			frame;
 	t_img			textures[4];
+	t_keys			keys;
 }	t_game;
 
 //utils.c
@@ -101,15 +112,17 @@ int		free_array_erro(char **ptr);
 void	exit_error(t_game *game, char *specific_msg);
 
 //cleanup.c
-void 	clean_up(t_game *game);
+void	clean_up(t_game *game);
 
 //engine/mlx_init.c
 void	init_mlx(t_game *game);
 void	load_intro(t_game *game);
 
 //engine/hooks.c
-int			handle_close(t_game *game);
-int			handle_keypress(int keycode, t_game *game);
+int		handle_close(t_game *game);
+int		handle_keypress(int keycode, t_game *game);
+int		handle_keyrelease(int keycode, t_game *game);
+void	update_player_position(t_game *game);
 
 //engine/render.c
 void	render_background(t_game *game);

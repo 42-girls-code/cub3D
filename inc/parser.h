@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:33:32 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:16:49 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/26 11:07:17 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ typedef enum e_type
 }	t_type;
 
 //parse_color.c
-int	set_color(char *line, t_type type, t_game *game);
+int		set_color(char *line, t_type type, t_game *game);
 
 //parse_map.c
-int	parse_map_file(char *path, t_game *game);
+int		parse_map_file(char *path, t_game *game);
 
 //parse_texture.c
-int	set_texture(char *line, t_type type, t_game *game);
+int		set_texture(char *line, t_type type, t_game *game);
 
 //valid_map.c
-int	valid_cub_extension(char *path);
-int	validate_map_walls(t_game *game);
+int		valid_cub_extension(char *path);
+int		validate_map_walls(t_game *game);
 
 //map_config.c
-int	process_config(char *line, t_game *game);
-int	process_map_line(char *line, t_game *game);
+int		process_config(char *line, t_game *game);
+int		process_map_line(char *line, t_game *game);
 
 //normalize_map.c
-int	convert_list_to_array(t_game *game);
+int		convert_list_to_array(t_game *game);
 
 //init_player.c
 void	save_player_info(t_game *game, char direction, int x);
