@@ -12,6 +12,7 @@ cub3D
 *.lib
 *.a
 /lib/minilibx
+minilibx-linux
 
 # Executables
 *.exe
