@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/26 12:08:24 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/26 13:24:29 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,8 @@ void	move_player_sideways(t_game *game, double speed);
 
 //player/rotate.c
 void	rotate_player(t_game *game, double angle);
+
+//engine/texture.c
+int		load_game_texture(t_game *game);
 
 #endif

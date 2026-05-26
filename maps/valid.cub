@@ -1,7 +1,7 @@
-NO assets/textures/path_to_the_north_texture
-SO assets/textures/path_to_the_south_texture
-WE assets/textures/path_to_the_west_texture
-EA assets/textures/path_to_the_east_texture
+NO assets/textures/wall_1a.xpm
+SO assets/textures/wall_4a.xpm
+WE assets/textures/bluestone.xpm
+EA assets/textures/greystone.xpm
 
 F 220,200,0
 C 225,30,0
