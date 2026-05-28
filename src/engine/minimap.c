@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 08:31:53 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/28 09:59:24 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/28 11:14:17 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 # define MM_TILE_SIZE 10
 # define MM_COLOR_WALL 0x343A40
-# define MM_COLOR_FLOOR 0x000000
+# define MM_COLOR_FLOOR 0x0A0A0F
 # define MM_COLOR_PLAYER 0x00F5D4
 # define MM_COLOR_DIR 0x00BBF9
 # define MM_COLOR_BORDER 0xD4AF37
 # define MM_OFFSET 20
-// # define MM_COLOR_DIR 0x0000FF
 
 static void	draw_minimap_tile(t_img *img, int map_x, int map_y, int color);
 static void	draw_minimap_player(t_img *img, t_game *game);
@@ -67,7 +66,7 @@ static void	draw_minimap_tile(t_img *img, int map_x, int map_y, int color)
 		j = 0;
 		while (j < MM_TILE_SIZE)
 		{
-			put_pixel(img, screen_x + j, screen_y + i, color);
+			put_pixel_transparant(img, screen_x + j, screen_y + i, color);
 			j++;
 		}
 		i++;
