@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/26 13:24:29 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/28 10:00:40 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,9 @@ void	rotate_player(t_game *game, double angle);
 
 //engine/texture.c
 int		load_game_texture(t_game *game);
+
+//engine/minimap.c
+void	draw_minimap(t_game *game);
+void	put_pixel_transparant(t_img *img, int x, int y, int color);
 
 #endif

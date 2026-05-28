@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/05/26 13:22:17 by ingrid           ###   ########.fr        #
+#    Updated: 2026/05/27 08:48:44 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/parser/init_player.c \
 		$(SRC_DIR)/player/move.c \
 		$(SRC_DIR)/player/rotate.c \
-		$(SRC_DIR)/engine/texture.c
+		$(SRC_DIR)/engine/texture.c \
+		$(SRC_DIR)/engine/minimap.c
 
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
