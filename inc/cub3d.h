@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/28 10:00:40 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/29 15:26:39 by csuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,25 @@
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 500
 
-# define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
+# define MOVE_SPEED 0.03
+# define ROT_SPEED 0.02
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	double	perp_wall_dist;
+}	t_ray;
 
 typedef struct s_keys
 {
@@ -147,5 +164,9 @@ int		load_game_texture(t_game *game);
 //engine/minimap.c
 void	draw_minimap(t_game *game);
 void	put_pixel_transparant(t_img *img, int x, int y, int color);
+
+//engine/raycasting.c
+void	cast_rays(t_game *game);
+
 
 #endif
