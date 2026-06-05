@@ -6,7 +6,7 @@
 /*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:07:06 by cris              #+#    #+#             */
-/*   Updated: 2026/06/05 16:10:14 by cris             ###   ########.fr       */
+/*   Updated: 2026/06/05 17:34:50 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ static void	get_tex_info(t_game *game, t_ray *ray)
 	double	wall_x;
 
 	if (ray->side == 0 && ray->step_x > 0)
-		ray->tex_num = SOUTH;
-	else if (ray->side == 0 && ray->step_x < 0)
-		ray->tex_num = NORTH;
-	else if (ray->side == 1 && ray->step_y > 0)
-		ray->tex_num = WEST;
-	else
 		ray->tex_num = EAST;
+	else if (ray->side == 0 && ray->step_x < 0)
+		ray->tex_num = WEST;
+	else if (ray->side == 1 && ray->step_y > 0)
+		ray->tex_num = SOUTH;
+	else
+		ray->tex_num = NORTH;
 	if (ray->side == 0)
 		wall_x = game->player.pos_y + ray->perp_wall_dist * ray->dir_y;
 	else
@@ -137,6 +137,8 @@ static void	draw_column(t_game *game, t_ray *ray, int x)
 		tex_pos += step;
 		color = *(int *)(tex->addr + tex_y * tex->line_len
 				+ ray->tex_x * (tex->bpp / 8));
+		if (ray->side == 1)
+    		color = (color >> 1) & 0x7F7F7F;
 		put_pixel(&game->frame, x, y, color);
 		y++;
 	}

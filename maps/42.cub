@@ -3,8 +3,8 @@ SO assets/textures/wall_4a.xpm
 WE assets/textures/bluestone.xpm
 EA assets/textures/greystone.xpm
 
-F 220,200,0
-C 225,30,0
+F 100,80,60
+C 30,30,50
 
 
          1111111111111111111111111
