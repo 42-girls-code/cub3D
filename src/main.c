@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cris <cris@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/29 15:30:30 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/06/05 16:03:57 by cris             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void	init_t_game(t_game *game)
 static void	start_game(t_game *game)
 {
 	init_mlx(game);
-	// if (load_game_texture(game))
-	// 	exit_error(game, "Error: Failed to load wall textures.");
+	if (load_game_texture(game))
+	 	exit_error(game, "Error: Failed to load wall textures.");
 	create_image(game);
 	load_intro(game);
 	mlx_hook(game->win, 17, 0, handle_close, game);
