@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:33:32 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/26 11:07:17 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/09 13:43:06 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int		process_map_line(char *line, t_game *game);
 int		convert_list_to_array(t_game *game);
 
 //init_player.c
-void	save_player_info(t_game *game, char direction, int x);
+void	save_player_info(t_game *game, char direction, int x, int y);
 
 #endif
