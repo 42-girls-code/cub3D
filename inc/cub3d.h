@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/29 15:26:39 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:13:15 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@
 # define LEFT_ARROW 65361
 # define ENTER_MAIN 65293
 # define ENTER_NUMPAD 65421
-# define SCREEN_WIDTH 800
-# define SCREEN_HEIGHT 500
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
 
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.02
+# define PLAYER_RADIUS 0.3
+# define MOUSE_SENSITIVITY 0.02
 
 typedef struct s_ray
 {
@@ -119,6 +121,8 @@ typedef struct s_game
 	t_img			frame;
 	t_img			textures[4];
 	t_keys			keys;
+	int				mouse_x;
+	double			mouse_delta;
 }	t_game;
 
 //utils.c
@@ -168,5 +172,6 @@ void	put_pixel_transparant(t_img *img, int x, int y, int color);
 //engine/raycasting.c
 void	cast_rays(t_game *game);
 
+int		handle_mouse_move(int x, int y, t_game *game);
 
 #endif

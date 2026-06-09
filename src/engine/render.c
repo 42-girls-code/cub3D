@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 16:20:25 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/29 15:19:14 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/06/09 14:14:04 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ int	render_game(t_game *game)
 	else if (game->state == STATE_PLAYING)
 	{
 		update_player_position(game);
+		if (game->mouse_delta)
+		{
+			rotate_player(game, game->mouse_delta * MOUSE_SENSITIVITY);
+			game->mouse_delta = 0.0;
+		}
 		render_background(game);
-		//raycasting;
 		cast_rays(game);
 		draw_minimap(game);
 		mlx_put_image_to_window(game->mlx, game->win, game->frame.img, 0, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/29 15:30:30 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/06/09 10:01:21 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_t_game(t_game *game)
 	game->config.floor_color = -1;
 	game->config.ceiling_color = -1;
 	game->state = STATE_INTRO;
+	game->mouse_x = -1;
 }
 
 static void	start_game(t_game *game)
@@ -31,6 +32,7 @@ static void	start_game(t_game *game)
 	mlx_hook(game->win, 17, 0, handle_close, game);
 	mlx_hook(game->win, 2, 1L << 0, handle_keypress, game);
 	mlx_hook(game->win, 3, 1L << 1, handle_keyrelease, game);
+	mlx_hook(game->win, 6, 1L << 6, handle_mouse_move, game);
 	mlx_loop_hook(game->mlx, render_game, game);
 	mlx_loop(game->mlx);
 }
