@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 13:21:29 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/25 15:19:33 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/09 13:43:19 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static int	is_map_line_valid(char *line, t_game *game)
 	while (line[i] && line[i] != '\n')
 	{
 		if (ft_strchr("NSEW", line[i]))
-			save_player_info(game, line[i], i);
+			save_player_info(game, line[i], i, ft_lstsize(game->map_list));
 		if (game->player_count > 1)
 		{
 			ft_putendl_fd("Error: multiple players detected.", 2);

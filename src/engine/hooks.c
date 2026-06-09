@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 15:09:58 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/26 12:02:53 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/09 14:22:54 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	handle_intro(int keycode, t_game *game)
 		game->state = STATE_PLAYING;
 		mlx_destroy_image(game->mlx, game->intro.img);
 		game->intro.img = NULL;
+		game->mouse_x = -1;
 	}
 }
 
