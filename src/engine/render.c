@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 16:20:25 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/09 14:14:04 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/11 02:12:53 by cris_sky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	render_game(t_game *game)
 			game->mouse_delta = 0.0;
 		}
 		render_background(game);
-		cast_rays(game);
+		raycasting(game);
 		draw_minimap(game);
 		mlx_put_image_to_window(game->mlx, game->win, game->frame.img, 0, 0);
 	}

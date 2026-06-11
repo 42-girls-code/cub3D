@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:07:06 by cris              #+#    #+#             */
-/*   Updated: 2026/05/29 15:20:03 by csuomins         ###   ########.fr       */
+/*   Updated: 2026/06/11 02:34:48 by cris_sky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "parser.h"
 #include <math.h>
 
 static void	init_ray(t_game *game, t_ray *ray, int x)
@@ -29,22 +30,26 @@ static void	init_step(t_game *game, t_ray *ray)
 	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->side_dist_x = (game->player.pos_x - ray->map_x) * ray->delta_dist_x;
+		ray->side_dist_x = (game->player.pos_x - ray->map_x)
+			* ray->delta_dist_x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - game->player.pos_x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - game->player.pos_x)
+			* ray->delta_dist_x;
 	}
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->side_dist_y = (game->player.pos_y - ray->map_y) * ray->delta_dist_y;
+		ray->side_dist_y = (game->player.pos_y - ray->map_y)
+			* ray->delta_dist_y;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - game->player.pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - game->player.pos_y)
+			* ray->delta_dist_y;
 	}
 }
 
@@ -82,32 +87,7 @@ static void	calc_wall_dist(t_game *game, t_ray *ray)
 				+ (1 - ray->step_y) / 2.0) / ray->dir_y;
 }
 
-static void	draw_column(t_game *game, t_ray *ray, int x)
-{
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
-	int	color;
-
-	line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
-	draw_start = (SCREEN_HEIGHT - line_height) / 2;
-	draw_end = (SCREEN_HEIGHT + line_height) / 2;
-	if (draw_start < 0)
-		draw_start = 0;
-	if (draw_end >= SCREEN_HEIGHT)
-		draw_end = SCREEN_HEIGHT - 1;
-	if (ray->side == 1)
-		color = 0x808080;
-	else
-		color = 0xAAAAAA;
-	while (draw_start <= draw_end)
-	{
-		put_pixel(&game->frame, x, draw_start, color);
-		draw_start++;
-	}
-}
-
-void	cast_rays(t_game *game)
+void	raycasting(t_game *game)
 {
 	t_ray	ray;
 	int		x;
@@ -119,6 +99,7 @@ void	cast_rays(t_game *game)
 		init_step(game, &ray);
 		perform_dda(game, &ray);
 		calc_wall_dist(game, &ray);
+		get_tex_info(game, &ray);
 		draw_column(game, &ray, x);
 		x++;
 	}

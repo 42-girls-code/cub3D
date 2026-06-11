@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
+#    By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/06/08 17:21:47 by ingrid           ###   ########.fr        #
+#    Updated: 2026/06/11 02:32:36 by cris_sky         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/player/rotate.c \
 		$(SRC_DIR)/engine/texture.c \
 		$(SRC_DIR)/engine/minimap_bonus.c \
+		$(SRC_DIR)/engine/raycasting_utils.c \
 		$(SRC_DIR)/engine/raycasting.c \
 		$(SRC_DIR)/engine/hooks_mouse_bonus.c
 
