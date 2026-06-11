@@ -6,7 +6,7 @@
 /*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/09 16:40:17 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/11 02:26:53 by cris_sky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,14 @@ typedef struct s_game
 	double			mouse_delta;
 }	t_game;
 
+typedef struct s_draw
+{
+	int		draw_start;
+	int		draw_end;
+	double	step;
+	double	tex_pos;
+}	t_draw;
+
 //utils.c
 int		message_erro(char *message);
 int		is_space(char c);
@@ -171,8 +179,12 @@ int		load_game_texture(t_game *game);
 void	draw_minimap(t_game *game);
 void	put_pixel_transparant(t_img *img, int x, int y, int color);
 
+//engine/raycasting_utils.c
+void	get_tex_info(t_game *game, t_ray *ray);
+void	draw_column(t_game *game, t_ray *ray, int x);
+
 //engine/raycasting.c
-void	cast_rays(t_game *game);
+void	raycasting(t_game *game);
 
 int		handle_mouse_move(int x, int y, t_game *game);
 
