@@ -6,7 +6,7 @@
 /*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 02:14:29 by cris_sky          #+#    #+#             */
-/*   Updated: 2026/06/11 02:25:17 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/11 02:35:09 by cris_sky         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	get_tex_info(t_game *game, t_ray *ray)
 	set_tex_x(game, ray, wall_x);
 }
 
-static void	init_draw(t_ray *ray, t_draw *d)
+static void	init_draw(t_ray *ray, t_draw *d, int tex_height)
 {
 	int	line_height;
 
@@ -54,7 +54,7 @@ static void	init_draw(t_ray *ray, t_draw *d)
 		d->draw_start = 0;
 	if (d->draw_end >= SCREEN_HEIGHT)
 		d->draw_end = SCREEN_HEIGHT - 1;
-	d->step = (double)SCREEN_HEIGHT / line_height;
+	d->step = (double)tex_height / line_height;
 	d->tex_pos = (d->draw_start - (SCREEN_HEIGHT - line_height) / 2.0)
 		* d->step;
 }
@@ -66,8 +66,8 @@ void	draw_column(t_game *game, t_ray *ray, int x)
 	int		color;
 	int		y;
 
-	init_draw(ray, &d);
 	tex = &game->textures[ray->tex_num];
+	init_draw(ray, &d, tex->height);
 	y = d.draw_start;
 	while (y <= d.draw_end)
 	{
