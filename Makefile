@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+         #
+#    By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/06/11 02:32:36 by cris_sky         ###   ########.fr        #
+#    Updated: 2026/06/12 15:35:01 by csuomins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,13 @@ SRC_DIR = src
 INC_DIR = inc
 OBJ_DIR = build
 LIBFT_DIR = lib/libft
-MINILIBX_DIR = minilibx-linux
 LIBFT_INC = $(LIBFT_DIR)/inc
-MINILIBX_INC = $(MINILIBX_DIR)
-LIBS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lz
+LIBS = -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lm -lz
 
-INCLUDES = -I$(INC_DIR) -I$(LIBFT_INC) -I$(MINILIBX_INC)
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_INC)
 
 # Library
 LIBFT = $(LIBFT_DIR)/libft.a
-MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 # Colors
 RESET = \033[0m
@@ -67,7 +64,6 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 # Rules
 all: $(NAME)
 
-# $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 $(NAME): $(OBJS) $(LIBFT)
 		@echo "$(YELLOW)[Cub3D]$(RESET) Linking objects..."
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
@@ -80,10 +76,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/cub3d.h
 $(LIBFT):
 		@echo "$(YELLOW)[LIB]$(RESET) Building libft..."
 		@$(MAKE) -C $(LIBFT_DIR) --silent
-
-# $(MINILIBX):
-# 	@echo "$(YELLOW)[MLX]$(RESET) Building MiniLibX..."
-# 	@$(MAKE) -C $(MINILIBX_DIR) --silent
 
 clean:
 		@rm -f $(NAME)

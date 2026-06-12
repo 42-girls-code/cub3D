@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
+/*   By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 02:14:29 by cris_sky          #+#    #+#             */
-/*   Updated: 2026/06/11 02:35:09 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/12 15:31:17 by csuomins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 static void	set_tex_x(t_game *game, t_ray *ray, double wall_x)
 {
 	ray->tex_x = (int)(wall_x * game->textures[ray->tex_num].width);
-	if (ray->side == 0 && ray->dir_x > 0)
+	if (ray->side == 0 && ray->dir_x < 0)
 		ray->tex_x = game->textures[ray->tex_num].width - ray->tex_x - 1;
-	if (ray->side == 1 && ray->dir_y < 0)
+	if (ray->side == 1 && ray->dir_y > 0)
 		ray->tex_x = game->textures[ray->tex_num].width - ray->tex_x - 1;
 }
 
