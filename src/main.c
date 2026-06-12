@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 02:19:52 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:53:59 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,4 @@ int	main(int argc, char *argv[])
 	start_game(&game);
 	clean_up(&game);
 	return (0);
-}
-
-void	print_player_debug(t_game *game) // eliminar
-{
-	//printf("\033[H\033[J"); // Limpa a tela do terminal
-	printf("=== DEBUG CUB3D ===\n");
-	printf("Posição Player:  X: [%.3f] | Y: [%.3f]\n",
-		game->player.pos_x, game->player.pos_y);
-	printf("Vetor Direção:   X: [%.3f] | Y: [%.3f]\n",
-		game->player.dir_x, game->player.dir_y);
-	printf("Plano Câmera:    X: [%.3f] | Y: [%.3f]\n",
-		game->player.plane_x, game->player.plane_y);
-	printf("===================\n");
 }

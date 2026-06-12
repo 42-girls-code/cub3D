@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 08:31:53 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/09 14:18:52 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/11 21:00:39 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #define MM_COLOR_FLOOR 0x0A0A0F
 #define MM_COLOR_PLAYER 0x00F5D4
 #define MM_COLOR_DIR 0x00BBF9
-#define MM_COLOR_BORDER 0x718096
 #define MM_OFFSET 20
 
 static void	draw_minimap_tile(t_img *img, int map_x, int map_y, int color);
@@ -111,18 +110,4 @@ static void	draw_minimap_direction(t_img *img, t_game *game)
 		put_pixel(img, dir_line_x, dir_line_y, MM_COLOR_DIR);
 		t += 0.5f;
 	}
-}
-
-void	put_pixel_transparant(t_img *img, int x, int y, int color)
-{
-	int	offset;
-	int	current_color;
-	int	mixed_color;
-
-	if (x < 0 || x >= img->width || y < 0 || y >= img->height)
-		return ;
-	offset = y * img->line_len + x * (img->bpp / 8);
-	current_color = *(unsigned int *)(img->addr + offset);
-	mixed_color = ((current_color & 0xFEFEFE) >> 1) + ((color & 0xFEFEFE) >> 1);
-	*(unsigned int *)(img->addr + offset) = mixed_color;
 }

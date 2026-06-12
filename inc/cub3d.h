@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 02:26:53 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/11 20:59:47 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ void	create_image(t_game *game);
 
 //engine/draw.c
 void	put_pixel(t_img *img, int x, int y, int color);
+void	put_pixel_transparant(t_img *img, int x, int y, int color);
 
 //player/move.c
 void	move_player_forward_back(t_game *game, double speed);
@@ -175,10 +176,6 @@ void	rotate_player(t_game *game, double angle);
 //engine/texture.c
 int		load_game_texture(t_game *game);
 
-//engine/minimap.c
-void	draw_minimap(t_game *game);
-void	put_pixel_transparant(t_img *img, int x, int y, int color);
-
 //engine/raycasting_utils.c
 void	get_tex_info(t_game *game, t_ray *ray);
 void	draw_column(t_game *game, t_ray *ray, int x);
@@ -186,6 +183,10 @@ void	draw_column(t_game *game, t_ray *ray, int x);
 //engine/raycasting.c
 void	raycasting(t_game *game);
 
+//engine/minimap.c
+void	draw_minimap(t_game *game);
+
+//engine/hooks_mouse_bonus.c
 int		handle_mouse_move(int x, int y, t_game *game);
 
 #endif
