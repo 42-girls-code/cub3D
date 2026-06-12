@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 20:59:47 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/11 22:07:51 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.02
-# define PLAYER_RADIUS 0.3
+# define PLR_RADIUS 0.3
 # define MOUSE_SENSITIVITY 0.02
 
 typedef struct s_ray
