@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:20:33 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 22:07:51 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/15 21:30:02 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "mlx.h"
 
+//teclas mapeadas (Linux)
 # define W 119
 # define S 115
 # define A 97
@@ -25,13 +26,14 @@
 # define LEFT_ARROW 65361
 # define ENTER_MAIN 65293
 # define ENTER_NUMPAD 65421
+
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
+# define PLR_RADIUS 0.3
 
+//alterar velocidade
 # define MOVE_SPEED 0.03
 # define ROT_SPEED 0.02
-# define PLR_RADIUS 0.3
-# define MOUSE_SENSITIVITY 0.02
 
 typedef struct s_ray
 {

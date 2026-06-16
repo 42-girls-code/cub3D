@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cris_sky <cris_sky@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 16:20:25 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 02:12:53 by cris_sky         ###   ########.fr       */
+/*   Updated: 2026/06/15 21:01:19 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	render_game(t_game *game)
 		update_player_position(game);
 		if (game->mouse_delta)
 		{
-			rotate_player(game, game->mouse_delta * MOUSE_SENSITIVITY);
+			rotate_player(game, game->mouse_delta * ROT_SPEED);
 			game->mouse_delta = 0.0;
 		}
 		render_background(game);

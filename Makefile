@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: csuomins <csuomins@student.42.fr>          +#+  +:+       +#+         #
+#    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/06 09:15:03 by ingrid            #+#    #+#              #
-#    Updated: 2026/06/12 15:35:01 by csuomins         ###   ########.fr        #
+#    Updated: 2026/06/15 21:23:50 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,15 @@ INC_DIR = inc
 OBJ_DIR = build
 LIBFT_DIR = lib/libft
 LIBFT_INC = $(LIBFT_DIR)/inc
-LIBS = -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lm -lz
+MLX_DIR = lib/minilibx-linux
+MLX_INC = $(MLX_DIR)/inc
+LIBS = -L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx -lXext -lX11 -lm -lz
 
-INCLUDES = -I$(INC_DIR) -I$(LIBFT_INC)
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_INC)
 
 # Library
 LIBFT = $(LIBFT_DIR)/libft.a
+MLX = $(MLX_DIR)/libmlx.a
 
 # Colors
 RESET = \033[0m
@@ -64,7 +67,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 # Rules
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
 		@echo "$(YELLOW)[Cub3D]$(RESET) Linking objects..."
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)[OK]$(RESET) $(NAME) compiled successfully."
@@ -78,14 +81,15 @@ $(LIBFT):
 		@$(MAKE) -C $(LIBFT_DIR) --silent
 
 clean:
-		@rm -f $(NAME)
 		@rm -rf $(OBJ_DIR)
+		@$(MAKE) clean -C $(LIBFT_DIR) --silent
 		@echo "$(RED)[FCLEAN]$(RESET) '$(NAME)' removed."
 
 fclean: clean
+		@rm -f $(NAME)
 		@$(MAKE) fclean -C $(LIBFT_DIR) --silent
 		@echo "$(RED)[FCLEAN]$(RESET) '$(NAME)' removed."
 
 re: fclean all
 
-PHONY: all clean fclean re
+.PHONY: all clean fclean re
