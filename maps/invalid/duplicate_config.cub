@@ -1,11 +1,11 @@
 F 220,200,0
-NO assets/textures/path_to_the_north_texture
-SO assets/textures/path_to_the_south_texture
-WE assets/textures/path_to_the_west_texture
-EA assets/textures/path_to_the_east_texture
+NO assets/textures/wall.xpm
+SO assets/textures/wall.xpm
+WE assets/textures/wall.xpm
+EA assets/textures/wall.xpm
 
-F 220,200,0
-C 225,30,0
+F 100,80,60
+C 0,53,44
 
 
          1111111111111111111111111

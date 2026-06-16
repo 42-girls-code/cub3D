@@ -6,14 +6,14 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/15 11:19:37 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/15 11:26:16 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/05/25 14:43:22 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	set_dimensions_map(t_game *game);
-static void	normalize_map(t_game *game);
+static int	normalize_map(t_game *game);
 static char	*fill_line_nomalize(char *line_content, int width);
 
 int	convert_list_to_array(t_game *game)
@@ -22,7 +22,8 @@ int	convert_list_to_array(t_game *game)
 	game->map.grid = malloc(sizeof(char *) * (game->map.height + 1));
 	if (!game->map.grid)
 		return (1);
-	normalize_map(game);
+	if (normalize_map(game) != 0)
+		return (1);
 	return (0);
 }
 
@@ -46,7 +47,7 @@ static void	set_dimensions_map(t_game *game)
 	game->map.width = width;
 }
 
-static void	normalize_map(t_game *game)
+static int	normalize_map(t_game *game)
 {
 	t_list	*tmp;
 	int		i;
@@ -56,10 +57,19 @@ static void	normalize_map(t_game *game)
 	while (tmp)
 	{
 		game->map.grid[i] = fill_line_nomalize(tmp->content, game->map.width);
+		if (!game->map.grid[i])
+		{
+			while (--i >= 0)
+				free(game->map.grid[i]);
+			free(game->map.grid);
+			game->map.grid = NULL;
+			return (1);
+		}
 		tmp = tmp->next;
 		i++;
 	}
 	game->map.grid[i] = NULL;
+	return (0);
 }
 
 static char	*fill_line_nomalize(char *line_content, int width)
