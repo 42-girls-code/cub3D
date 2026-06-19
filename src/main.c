@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/11 20:53:59 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/06/19 15:09:59 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	init_t_game(t_game *game)
 
 static void	start_game(t_game *game)
 {
-	init_mlx(game);
 	if (load_game_texture(game))
 		exit_error(game, "Error: Failed to load wall textures.");
+	init_mlx(game);
 	create_image(game);
 	load_intro(game);
 	mlx_hook(game->win, 17, 0, handle_close, game);
