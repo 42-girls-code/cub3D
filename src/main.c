@@ -6,7 +6,7 @@
 /*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:19:55 by ingrid            #+#    #+#             */
-/*   Updated: 2026/06/30 11:55:30 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2026/07/14 12:58:00 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	start_game(t_game *game)
 	init_mlx(game);
 	if (load_game_texture(game))
 		exit_error(game, "Error: Failed to load wall textures.");
-	init_mlx(game);
 	create_image(game);
 	load_intro(game);
 	mlx_hook(game->win, 17, 0, handle_close, game);
