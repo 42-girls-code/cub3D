@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:51:43 by ingrid            #+#    #+#             */
-/*   Updated: 2026/05/15 14:57:05 by ingrid           ###   ########.fr       */
+/*   Updated: 2026/07/14 13:13:40 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static int	finalize_parsing(t_game *game)
 	return (0);
 }
 
-//mover para arquivo valid_map
 static int	validate_final_config(t_game *game)
 {
 	if (game->config.count < 6)
